@@ -24,7 +24,7 @@ func NewSafeELFFile(r io.ReaderAt) (safe *SafeELFFile, err error) {
 		}
 
 		safe = nil
-		err = fmt.Errorf("reading ELF file panicked: %s", r)
+		err = fmt.Errorf("reading ELF file panicked: %w", r)
 	}()
 
 	file, err := elf.NewFile(r)
@@ -44,7 +44,7 @@ func (se *SafeELFFile) Symbols() (syms []elf.Symbol, err error) {
 		}
 
 		syms = nil
-		err = fmt.Errorf("reading ELF symbols panicked: %s", r)
+		err = fmt.Errorf("reading ELF symbols panicked: %w", r)
 	}()
 
 	syms, err = se.File.Symbols()
@@ -60,7 +60,7 @@ func (se *SafeELFFile) DynamicSymbols() (syms []elf.Symbol, err error) {
 		}
 
 		syms = nil
-		err = fmt.Errorf("reading ELF dynamic symbols panicked: %s", r)
+		err = fmt.Errorf("reading ELF dynamic symbols panicked: %w", r)
 	}()
 
 	syms, err = se.File.DynamicSymbols()

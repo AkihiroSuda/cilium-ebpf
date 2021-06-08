@@ -269,7 +269,7 @@ func parseExtInfoRelos(r io.Reader, bo binary.ByteOrder, strings stringTable) (m
 
 			accessor, err := parseCoreAccessor(accessorStr)
 			if err != nil {
-				return nil, fmt.Errorf("accessor %q: %s", accessorStr, err)
+				return nil, fmt.Errorf("accessor %q: %w", accessorStr, err)
 			}
 
 			relos = append(relos, coreRelo{
